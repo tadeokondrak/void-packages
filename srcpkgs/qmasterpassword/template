@@ -1,0 +1,25 @@
+# Template file for 'qmasterpassword'
+pkgname=qmasterpassword
+version=1.2.2
+revision=1
+wrksrc="qMasterPassword-${version}"
+build_style=qmake
+hostmakedepends="qt5-devel"
+makedepends="qt5-devel libXtst-devel libscrypt-devel"
+depends="desktop-file-utils hicolor-icon-theme"
+maintainer="Tadeo Kondrak <me@tadeo.ca>"
+short_desc="Stateless Master Password manager based on Qt"
+homepage="https://github.com/bkueng/qMasterPassword"
+license="GPL-3.0-only"
+distfiles="https://github.com/bkueng/qMasterPassword/archive/v${version}.tar.gz"
+checksum=daeb8055a689c770eae197356e43adf43b2e3de386e927522c90b55bdc01642e
+
+do_install() {
+	vbin qMasterPassword
+	vlicense LICENSE
+	vdoc HISTORY
+	vdoc README.md
+	vinstall data/icons/app_icon.png 644 usr/share/pixmaps qmasterpassword.png
+	vinstall data/qMasterPassword.desktop 644 usr/share/applications
+	vinstall data/qMasterPassword.appdata.xml 644 usr/share/appdata
+}
